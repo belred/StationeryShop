@@ -1,0 +1,16 @@
+bin/
+obj/
+Migrations/
+packages/
+.vs/
+*.user
+*.suo
+*.cache
+*.swp
+*.log
+*.tmp
+*.bak
+/publish/
+/build/
+*.vcxproj.*
+*.sln.iml
