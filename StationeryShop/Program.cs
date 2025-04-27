@@ -67,10 +67,19 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.Cookie.Name = "Stationery.Auth";
         options.LoginPath = "/api/Auth/login";
         options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
-        options.Events.OnRedirectToLogin = context =>
+        options.Events = new CookieAuthenticationEvents
         {
-            context.Response.StatusCode = 401;
-            return Task.CompletedTask;
+            OnRedirectToLogin = context =>
+            {
+                context.Response.StatusCode = 401;
+                context.Response.ContentType = "application/json";
+                return context.Response.WriteAsync(JsonSerializer.Serialize(new
+                {
+                    error = "Требуется авторизация",
+                    solution = "Пожалуйста, войдите через /api/Auth/login",
+                    status = 401
+                }));
+            }
         };
     });
 
@@ -92,17 +101,18 @@ app.UseCors("ApiPolicy");
 
 app.UseAuthentication();
 
-app.UseSession();
-
 app.UseAuthorization();
 
-app.UseStatusCodePages(async context =>
+app.Use(async (context, next) =>
 {
-    if (context.HttpContext.Request.Path.StartsWithSegments("/api")
-        && context.HttpContext.Response.StatusCode == 401)
+    await next();
+
+    if (context.Response.StatusCode == 401 &&
+        context.Request.Path.StartsWithSegments("/api") &&
+        !context.Response.HasStarted)
     {
-        context.HttpContext.Response.ContentType = "application/json";
-        await context.HttpContext.Response.WriteAsync(JsonSerializer.Serialize(new
+        context.Response.ContentType = "application/json";
+        await context.Response.WriteAsync(JsonSerializer.Serialize(new
         {
             error = "Требуется авторизация",
             solution = "Пожалуйста, войдите через /api/Auth/login",
@@ -110,6 +120,8 @@ app.UseStatusCodePages(async context =>
         }));
     }
 });
+
+app.UseSession();
 
 app.MapControllers();
 
