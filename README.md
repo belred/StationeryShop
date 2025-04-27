@@ -50,7 +50,7 @@ StationeryShop/
 
 | Метод  | Путь                      | Описание                     | Требуется аутентификация | Swagger | Postman |
 |--------|---------------------------|------------------------------|--------------------------|---------|---------|
-| POST   | `/api/Auth/register`      | Регистрация пользователя     | Нет                      | [Swagger](swagger/refister.png)| [Postman](postman/refister.png)|
+| POST   | `/api/Auth/register`      | Регистрация пользователя     | Нет                      | [Swagger](swagger/register.png)| [Postman](postman/register.png)|
 | POST   | `/api/Auth/login`         | Вход в систему               | Нет                      | [Swagger](swagger/login.png)| [Postman](postman/login.png)|
 | POST   | `/api/Auth/logout`        | Выход из системы             | Да                       | [Swagger](swagger/logout.png)|  [Postman](postman/logout.png)|
 
