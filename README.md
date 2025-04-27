@@ -79,7 +79,7 @@ StationeryShop/
 
 | Метод  | Путь                      | Описание                              | Требуется аутентификация | Swagger | Postman |
 |--------|---------------------------|---------------------------------------|--------------------------|---------|---------|
-| GET    | `/api/Reviews/product/{productid}`| Получить отзывы на товар      | Нет                      | [Swagger](swagger/get_reviews.png)| [Postman](postman/get_reviews.png)|
+| GET    | `/api/Reviews/product/{productid}`| Получить отзывы на товар      | Нет                      | [Swagger](swagger/get_reviews.png)| [Postman](postman/get_review.png)|
 | POST   | `/api/Reviews`            | Добавить отзыв на товар               | Да                       | [Swagger](swagger/post_review.png)| [Postman](postman/post_review.png)|
 
 ### 📦 Заказы
