@@ -16,7 +16,7 @@ API сервис для покупки канцелярских товаров �
 
 ## 📚 Документация API
 
-Доступна по адресу: `https://localhost:7038/swagger/index.html`
+Доступна при запуске веб-сервиса по адресу: `https://localhost:7038/swagger/index.html`
 
 ## 🛠️ Структура проекта
 
@@ -96,3 +96,8 @@ StationeryShop/
 | GET    | `/api/Clients/me`         | Получить информацию о клиенте         | Да                       | [Swagger](swagger/get_client_info.png)| [Postman](postman/get_client_info.png)|
 | PUT    | `/api/Clients/me`         | Обновить информацию о клиенте         | Да                       | [Swagger](swagger/put_client_update.png)| [Postman](postman/put_client_update.png)|
 | DELETE | `/api/Clients/me`         | Удалить аккаунт                       | Да                       | [Swagger](swagger/delete_client.png)| [Postman](postman/delete_client.png)|
+
+## 🧪 Тестирование корректных обработок ошибок
+
+[Swagger](swagger/errors)
+[Postman](postman/errors)
